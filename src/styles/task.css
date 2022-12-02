@@ -1,0 +1,46 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    padding: 0rem;
+    background-color: #ffffff;
+    padding: 1rem 0 1rem 0;
+    border-radius: 8px;
+    color: rgb(151, 148, 148);
+    gap: 1rem;
+}
+
+
+.form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub-tasks {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.sub-tasks {
+    margin-top: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.form-subtask {
+    background-color: #6e6ac2;
+    padding: .5rem 3rem;
+    border-radius: 2rem;
+    color: #f1f1f1;
+    border: none;
+}
+
+button {
+    cursor: pointer;
+}
