@@ -6,6 +6,7 @@ import Checkbox from '@mui/material/Checkbox';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
+import { MdClose } from "react-icons/md";
 
 
 const mapStateToProps = (state) => {
@@ -29,9 +30,6 @@ function Home({ state }) {
   const show = (title) => {
     document.getElementById(title).style.display = 'flex'
   }
-  useEffect(()=> {
-    
-  },[])
   return (
     <>
       <NavBar handleClose={handleClose} handleOpen={handleOpen} open={open}></NavBar>
@@ -47,8 +45,11 @@ function Home({ state }) {
                       <h2 className='task-title'>{task.title}</h2>
                       <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
                     </section>
-                    <div>
-                      <form id={`test-${task.title}`} onClick={() => hidden(`test-${task.title}`)} className={`view-task`}>
+                    <div id={`test-${task.title}`} className={`view-task prueba`}>                      
+                      <form >
+                      <div className="task-icon-close">
+                        <MdClose className="icon-close" onClick={() => hidden(`test-${task.title}`)}/>
+                      </div>
                         <h3 >{task.title}</h3>
                         <div>
                           <p>{task.description}</p>
@@ -101,8 +102,11 @@ function Home({ state }) {
                       <h2 className='task-title'>{task.title}</h2>
                       <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
                     </section>
-                    <div>
-                      <form id={`test-${task.title}`} onClick={() => hidden(`test-${task.title}`)} className={`view-task`}>
+                    <div id={`test-${task.title}`} onClick={() => hidden(`test-${task.title}`)} className={`view-task prueba`}>
+                      <div>
+
+                      </div>
+                      <form>
                         <h3 >{task.title}</h3>
                         <div>
                           <p>{task.description}</p>
@@ -154,8 +158,8 @@ function Home({ state }) {
                       <h2 className='task-title'>{task.title}</h2>
                       <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
                     </section>
-                    <div>
-                      <form id={`test-${task.title}`} onClick={() => hidden(`test-${task.title}`)} className={`view-task`}>
+                    <div id={`test-${task.title}`} onClick={() => hidden(`test-${task.title}`)} className={`view-task prueba`}>
+                      <form >
                         <h3 >{task.title}</h3>
                         <div>
                           <p>{task.description}</p>

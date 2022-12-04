@@ -19,19 +19,29 @@ function Task({ handleClose, openModal, createTask }) {
 	}
 	const eventChange = ((e) => {
 		e.preventDefault()
-	})	
+	})
 	return (
-		<div className="form">			
+		<div className="form">
 			<div>
 				<Formik
 					initialValues={{
 						title: '',
 						description: '',
-						subtasks: [],
-						status: 'None'
+						subtasks: '',
+						status: 'Todo'
 					}}
-					validate={values => {						
-						const errors = {};						
+					validate={values => {
+						const errors = {};
+						if (!values.title) {
+							errors.title = 'El campo es necesario'
+						}
+						if (!values.description) {
+							errors.description = 'El campo es necesario'
+						}
+						if (!values.subtasks) {
+							errors.subtasks = 'El campo es necesario'
+						}
+						console.log(errors)
 						return errors;
 					}}
 					onSubmit={(values) => {
@@ -40,55 +50,68 @@ function Task({ handleClose, openModal, createTask }) {
 				>
 					{({
 						values,
-						errors,						
+						errors,
 						handleChange,
 						handleSubmit,
+						handleBlur,
+						touched
 					}) => (
 						<Modal
 							open={openModal}
 							onClose={handleClose}
-							
+
 						>
 							<Box sx={style}>
 								<form>
 									<p>Add New Task</p>
 									<div>
 										<p>Title</p>
-										<FormControl sx={{ m: 1, width: '250px' }} variant="outlined" >
-											<OutlinedInput placeholder="e.g landing" value={values.title} onChange={handleChange} name='title'/>
+										<FormControl sx={{ m: 1, width: '250px' }} variant="outlined">
+											<OutlinedInput placeholder="e.g landing" value={values.title} onBlur={handleBlur} onChange={handleChange} name='title' />
 										</FormControl>
 									</div>
+									{
+										errors.title && touched.title &&
+										<label className="task-error" placeholder="e.g landing">{errors.title}</label>
+									}
 									<div>
 										<p>Description</p>
 										<FormControl sx={{ m: 1, width: '250px' }} variant="outlined" >
 											<OutlinedInput placeholder="e.g landing" multiline
 												rows={2}
-												rowsMax={10} 
+												rowsMax={10}
 												onChange={handleChange}
 												value={values.description}
-												name='description'/>
+												onBlur={handleBlur}
+												name='description' />
 										</FormControl>
 									</div>
+									{
+										errors.description && touched.description &&
+										<label className="task-error" placeholder="e.g landing">{errors.description}</label>
+									}
 									<div>
 										<p>SubTask</p>
 										<div className='sub-tasks'>
 											<FormControl sx={{ m: 1, width: '250px' }} variant="outlined" >
-												<OutlinedInput placeholder="e.g landing" onChange={handleChange} value={values.subtasks} name='subtasks'/>
-											</FormControl>											
+												<OutlinedInput placeholder="e.g landing" onChange={handleChange} onBlur={handleBlur} value={values.subtasks} name='subtasks' />
+											</FormControl>
 										</div>
-									</div>					
+									</div>
+									{
+										errors.subtasks && touched.subtasks &&
+										<label className="task-error" placeholder="e.g landing">{errors.subtasks}</label>
+									}
 									<div>
 										<p>Status</p>
 										<FormControl sx={{ m: 1, minWidth: 120, }}>
-											<Select												
+											<Select
+												onBlur={handleBlur}
 												value={values.status}
 												onChange={handleChange}
-												sx={{ width: '250px' }}												
+												sx={{ width: '250px' }}
 												name='status'
-											>
-												<MenuItem value="None">
-													None
-												</MenuItem>
+											>												
 												<MenuItem value={'Todo'}>Todo</MenuItem>
 												<MenuItem value={'Doing'}>Doing</MenuItem>
 												<MenuItem value={'Done'}>Done</MenuItem>

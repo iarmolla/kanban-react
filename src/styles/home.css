@@ -77,4 +77,47 @@ main {
 
 .view-task {
   display: none;
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  /* transform: translate(-50%, -50%); */
+  width: 400px;
+  background-color: #fff;
+  border: 2px solid #000;
+  padding: 32px;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-tap-highlight-color: transparent;
+  z-index: -1;
+  min-width: 100vw;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.prueba {
+  position: fixed;
+  z-index: 1300;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  left: 0;
+}
+
+.task-icon-close {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  margin-right: 2.5rem;
+}
+.icon-close {
+  border-radius: 8px;
+  padding: .5rem;
+  transition: 250ms;
+}
+.icon-close:hover {
+  padding: .5rem;
+  opacity: .3;
+  background-color: rgb(114, 114, 114);
+
 }

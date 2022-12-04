@@ -44,3 +44,7 @@ form {
 button {
     cursor: pointer;
 }
+
+.task-error {
+    color: rgb(232, 98, 98);
+}
