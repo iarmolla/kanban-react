@@ -68,7 +68,6 @@ function Home({ state, updateTask }) {
                             }
                           }))
                           updateTask(values)
-
                         }}
                       >
                         {({
