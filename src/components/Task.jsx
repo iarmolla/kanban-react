@@ -1,14 +1,14 @@
 import React from 'react'
 import '../styles/task.css'
-import MenuItem from '@mui/material/MenuItem';
+import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
-import OutlinedInput from '@mui/material/OutlinedInput';
+import Modal from '@mui/material/Modal'
+import Box from '@mui/material/Box'
+import OutlinedInput from '@mui/material/OutlinedInput'
 import { connect } from 'react-redux'
 import { createTask } from '../actions/taskActions'
-import { Formik } from 'formik';
+import { Formik } from 'formik'
 
 function Task({ handleClose, openModal, createTask }) {
 	const style = {
@@ -40,8 +40,7 @@ function Task({ handleClose, openModal, createTask }) {
 						}
 						if (!values.subtasks) {
 							errors.subtasks = 'El campo es necesario'
-						}
-						console.log(errors)
+						}					
 						return errors;
 					}}
 					onSubmit={(values) => {

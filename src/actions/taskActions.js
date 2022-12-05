@@ -5,6 +5,14 @@ function createTask(task) {
     }
 }
 
+function updateTask(task) {
+    return {
+        type: 'UPDATE_TASK',
+        task
+    }
+}
+
 export {
-    createTask
+    createTask,
+    updateTask
 }

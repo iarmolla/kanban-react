@@ -95,7 +95,7 @@ main {
   flex-direction: column;
 }
 
-.prueba {
+.hide-task {
   position: fixed;
   z-index: 1300;
   right: 0;
