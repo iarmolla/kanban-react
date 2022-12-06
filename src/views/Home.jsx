@@ -33,7 +33,6 @@ function Home({ state, updateTask }) {
   useEffect(() => {
     setTasks(state)
   }, [tasks])
-
   return (
     <>
       <NavBar handleClose={handleClose} handleOpen={handleOpen} open={open}></NavBar>
@@ -41,16 +40,17 @@ function Home({ state, updateTask }) {
         <div className='task-container'>
           <div className="circle"></div>
           {
-            tasks.map((task) => {
+            tasks.map((task, index) => {             
               return (
                 task?.status == 'Todo' ?
-                  <>
+                  <div key={index}>
                     <section className="task" onClick={() => show(`test-${task.title}`)}>
                       <h2 className='task-title'>{task.title}</h2>
                       <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
                     </section>
                     <div id={`test-${task.title}`} className={`view-task hide-task`}>
-                      <Formik initialValues={{                       
+                      <Formik initialValues={{
+                        id: task.id,
                         title: task.title,
                         description: task.description,
                         subtasks: '',
@@ -63,7 +63,7 @@ function Home({ state, updateTask }) {
                         }}
                         onSubmit={(values) => {
                           setTasks(tasks.map((task) => {
-                            if (task.title == values.title) {
+                            if (task.id == values.id) {
                               task.status = values.status
                             }
                           }))
@@ -119,7 +119,7 @@ function Home({ state, updateTask }) {
                         )}
                       </Formik>
                     </div>
-                  </>
+                  </div>
                   : <></>
               )
             })
@@ -129,16 +129,17 @@ function Home({ state, updateTask }) {
         <div className='task-container'>
           <div className="circle circle-todo"></div>
           {
-            tasks.map((task) => {
+            tasks.map((task, index) => {
               return (
                 task?.status == 'Doing' ?
-                  <>
+                  <div key={index}>
                     <section className="task" onClick={() => show(`test-${task.title}`)}>
                       <h2 className='task-title'>{task.title}</h2>
                       <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
                     </section>
                     <div id={`test-${task.title}`} className={`view-task hide-task`}>
                       <Formik initialValues={{
+                        id: task.id,
                         title: task.title,
                         description: task.description,
                         subtasks: '',
@@ -150,13 +151,12 @@ function Home({ state, updateTask }) {
 
                         }}
                         onSubmit={(values) => {
-                          console.log(values)
                           setTasks(tasks.map((task) => {
-                            if (task.title == values.title) {
+                            if (task.id == values.id) {
                               task.status = values.status
                             }
                           }))
-                          console.log(tasks)                          
+                          updateTask(values)
                         }}
                       >
                         {({
@@ -210,7 +210,7 @@ function Home({ state, updateTask }) {
                         )}
                       </Formik>
                     </div>
-                  </>
+                  </div>
                   : <></>
               )
             })
@@ -219,16 +219,17 @@ function Home({ state, updateTask }) {
         <div className='task-container'>
           <div className="circle circle-done"></div>
           {
-            tasks.map((task) => {
+            tasks.map((task, index) => {
               return (
                 task?.status == 'Done' ?
-                  <>
+                  <div key={index}>
                     <section className="task" onClick={() => show(`test-${task.title}`)}>
                       <h2 className='task-title'>{task.title}</h2>
                       <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
                     </section>
                     <div id={`test-${task.title}`} className={`view-task hide-task`}>
                       <Formik initialValues={{
+                        id: task.id,
                         title: task.title,
                         description: task.description,
                         subtasks: '',
@@ -241,7 +242,7 @@ function Home({ state, updateTask }) {
                         }}
                         onSubmit={(values) => {
                           setTasks(tasks.map((task) => {
-                            if (task.title == values.title) {
+                            if (task.id == values.id) {
                               task.status = values.status
                             }
                           }))
@@ -261,8 +262,7 @@ function Home({ state, updateTask }) {
                               <MdClose className="icon-close" onClick={() => {
                                 hidden(`test-${task.title}`)
                                 handleSubmit()
-                              }
-                              } />
+                              }} />
                             </div>
                             <h3>{task.title}</h3>
                             <div>
@@ -300,7 +300,7 @@ function Home({ state, updateTask }) {
                         )}
                       </Formik>
                     </div>
-                  </>
+                  </div>
                   : <></>
               )
             })

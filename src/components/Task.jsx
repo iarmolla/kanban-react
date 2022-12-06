@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/task.css'
 import MenuItem from '@mui/material/MenuItem'
 import FormControl from '@mui/material/FormControl'
@@ -10,7 +10,8 @@ import { connect } from 'react-redux'
 import { createTask } from '../actions/taskActions'
 import { Formik } from 'formik'
 
-function Task({ handleClose, openModal, createTask }) {
+function Task({ handleClose, openModal, state, createTask }) {
+	const [counter, setCounter] = useState(0)
 	const style = {
 		position: 'absolute',
 		top: '50%',
@@ -20,11 +21,23 @@ function Task({ handleClose, openModal, createTask }) {
 	const eventChange = ((e) => {
 		e.preventDefault()
 	})
+	const [repeat, setRepeat] = useState('')
+	const [tasks, setTasks] = useState(state)
+	const validateTask = (taskForm) => {
+		let taskValidate = false		
+		tasks.map((task) => {
+			if (task.title == taskForm.title) {	
+				taskValidate = true
+			}			
+		})
+		return taskValidate
+	}
 	return (
 		<div className="form">
 			<div>
 				<Formik
 					initialValues={{
+						id: 0,
 						title: '',
 						description: '',
 						subtasks: '',
@@ -40,11 +53,28 @@ function Task({ handleClose, openModal, createTask }) {
 						}
 						if (!values.subtasks) {
 							errors.subtasks = 'El campo es necesario'
-						}					
+						}
 						return errors;
 					}}
 					onSubmit={(values) => {
-						createTask(values)
+						const taskForm = {
+							id: counter,
+							title: values.title,
+							description: values.description,
+							subtasks: values.subtasks,
+							status: values.status
+						}				
+						const validations = validateTask(taskForm)
+						console.log(validations)
+						
+						if(validations){							
+							setRepeat('el titulo tiene que ser distinto')
+						}
+						else {					
+							handleClose()
+							setRepeat('')
+							createTask(taskForm)		
+						}
 					}}
 				>
 					{({
@@ -78,7 +108,6 @@ function Task({ handleClose, openModal, createTask }) {
 										<FormControl sx={{ m: 1, width: '250px' }} variant="outlined" >
 											<OutlinedInput placeholder="e.g landing" multiline
 												rows={2}
-												rowsMax={10}
 												onChange={handleChange}
 												value={values.description}
 												onBlur={handleBlur}
@@ -110,26 +139,36 @@ function Task({ handleClose, openModal, createTask }) {
 												onChange={handleChange}
 												sx={{ width: '250px' }}
 												name='status'
-											>												
+											>
 												<MenuItem value={'Todo'}>Todo</MenuItem>
 												<MenuItem value={'Doing'}>Doing</MenuItem>
 												<MenuItem value={'Done'}>Done</MenuItem>
 											</Select>
 										</FormControl>
 									</div>
-									<button className='form-subtask' onClick={(e) => {
+									<button type='submit' className='form-subtask' onClick={(e) => {
 										eventChange(e)
+										setCounter(counter + 1)
 										handleSubmit()
 									}}>Create Task</button>
+									<div>
+										<label className="task-error"> {repeat} </label>
+									</div>
 								</form>
 							</Box>
 						</Modal>
 					)}
 				</Formik>
 			</div>
-		</div>
+		</div >
 	)
 }
 
-export default connect(null, { createTask })(Task)
+const mapStateToProps = (state) => {
+	return {
+		state: state.tasks
+	}
+}
+
+export default connect(mapStateToProps, { createTask })(Task)
 
