@@ -121,3 +121,19 @@ main {
   background-color: rgb(114, 114, 114);
 
 }
+
+@media (max-width: 767px) {
+  
+}
+
+@media (max-width: 992px) {
+  main {
+  }
+  .task-container {
+    max-width: 150px;
+    min-width: 50px;
+  }
+  .task {
+    min-width: 50px;
+  }
+}
