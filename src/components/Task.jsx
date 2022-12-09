@@ -63,10 +63,8 @@ return (
 						status: values.status
 					}
 					const validations = validateTask(taskForm)
-					console.log(validations)
-
 					if (validations) {
-						setRepeat('el titulo tiene que ser distinto')
+						setRepeat('*El titulo esta en uso*')
 					}
 					else {
 						handleClose()

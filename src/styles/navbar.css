@@ -40,4 +40,5 @@ header > div > button {
 .task-icon {
   color: rgb(174, 171, 171);
   font-size: 1.3rem;
+  cursor: pointer;
 }

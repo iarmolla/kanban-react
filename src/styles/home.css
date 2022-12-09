@@ -4,6 +4,7 @@ main {
   justify-items: center;
   width: 100%;
   position: relative;
+  gap: 1rem;
 }
 
 .circle {
@@ -122,12 +123,17 @@ main {
 
 }
 
-@media (max-width: 767px) {
-  
-}
-
 @media (max-width: 992px) {
   main {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: flex-start;
+    gap: 3rem;
+    width: 100%;
+    position: relative;
+  }
+  .task {
+    margin-left: 10rem;
   }
   .task-container {
     max-width: 150px;
