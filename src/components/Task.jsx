@@ -24,144 +24,142 @@ function Task({ handleClose, openModal, state, createTask }) {
 	const [repeat, setRepeat] = useState('')
 	const [tasks, setTasks] = useState(state)
 	const validateTask = (taskForm) => {
-		let taskValidate = false		
+		let taskValidate = false
 		tasks.map((task) => {
-			if (task.title == taskForm.title) {	
-				taskValidate = true
-			}			
-		})
-		return taskValidate
-	}
-	return (
-		<div className="form">
-			<div>
-				<Formik
-					initialValues={{
-						id: 0,
-						title: '',
-						description: '',
-						subtasks: '',
-						status: 'Todo'
-					}}
-					validate={values => {
-						const errors = {};
-						if (!values.title) {
-							errors.title = 'El campo es necesario'
-						}
-						if (!values.description) {
-							errors.description = 'El campo es necesario'
-						}
-						if (!values.subtasks) {
-							errors.subtasks = 'El campo es necesario'
-						}
-						return errors;
-					}}
-					onSubmit={(values) => {
-						const taskForm = {
-							id: counter,
-							title: values.title,
-							description: values.description,
-							subtasks: values.subtasks,
-							status: values.status
-						}				
-						const validations = validateTask(taskForm)
-						console.log(validations)
-						
-						if(validations){							
-							setRepeat('el titulo tiene que ser distinto')
-						}
-						else {					
-							handleClose()
-							setRepeat('')
-							createTask(taskForm)		
-						}
-					}}
-				>
-					{({
-						values,
-						errors,
-						handleChange,
-						handleSubmit,
-						handleBlur,
-						touched
-					}) => (
-						<Modal
-							open={openModal}
-							onClose={handleClose}
+			taskValidate = task.title == taskForm.title
+	})
+	return taskValidate
+}
+return (
+	<div className="form">
+		<div>
+			<Formik
+				initialValues={{
+					id: 0,
+					title: '',
+					description: '',
+					subtasks: '',
+					status: 'Todo'
+				}}
+				validate={values => {
+					const errors = {};
+					if (!values.title) {
+						errors.title = 'El campo es necesario'
+					}
+					if (!values.description) {
+						errors.description = 'El campo es necesario'
+					}
+					if (!values.subtasks) {
+						errors.subtasks = 'El campo es necesario'
+					}
+					return errors;
+				}}
+				onSubmit={(values) => {
+					const taskForm = {
+						id: counter,
+						title: values.title,
+						description: values.description,
+						subtasks: values.subtasks,
+						status: values.status
+					}
+					const validations = validateTask(taskForm)
+					console.log(validations)
 
-						>
-							<Box sx={style}>
-								<form>
-									<p>Add New Task</p>
-									<div>
-										<p>Title</p>
-										<FormControl sx={{ m: 1, width: '250px' }} variant="outlined">
-											<OutlinedInput placeholder="e.g landing" value={values.title} onBlur={handleBlur} onChange={handleChange} name='title' />
-										</FormControl>
-									</div>
-									{
-										errors.title && touched.title &&
-										<label className="task-error" placeholder="e.g landing">{errors.title}</label>
-									}
-									<div>
-										<p>Description</p>
+					if (validations) {
+						setRepeat('el titulo tiene que ser distinto')
+					}
+					else {
+						handleClose()
+						setRepeat('')
+						createTask(taskForm)
+					}
+				}}
+			>
+				{({
+					values,
+					errors,
+					handleChange,
+					handleSubmit,
+					handleBlur,
+					touched
+				}) => (
+					<Modal
+						open={openModal}
+						onClose={handleClose}
+
+					>
+						<Box sx={style}>
+							<form>
+								<p>Add New Task</p>
+								<div>
+									<p>Title</p>
+									<FormControl sx={{ m: 1, width: '250px' }} variant="outlined">
+										<OutlinedInput placeholder="e.g landing" value={values.title} onBlur={handleBlur} onChange={handleChange} name='title' />
+									</FormControl>
+								</div>
+								{
+									errors.title && touched.title &&
+									<label className="task-error" placeholder="e.g landing">{errors.title}</label>
+								}
+								<div>
+									<p>Description</p>
+									<FormControl sx={{ m: 1, width: '250px' }} variant="outlined" >
+										<OutlinedInput placeholder="e.g landing" multiline
+											rows={2}
+											onChange={handleChange}
+											value={values.description}
+											onBlur={handleBlur}
+											name='description' />
+									</FormControl>
+								</div>
+								{
+									errors.description && touched.description &&
+									<label className="task-error" placeholder="e.g landing">{errors.description}</label>
+								}
+								<div>
+									<p>SubTask</p>
+									<div className='sub-tasks'>
 										<FormControl sx={{ m: 1, width: '250px' }} variant="outlined" >
-											<OutlinedInput placeholder="e.g landing" multiline
-												rows={2}
-												onChange={handleChange}
-												value={values.description}
-												onBlur={handleBlur}
-												name='description' />
+											<OutlinedInput placeholder="e.g landing" onChange={handleChange} onBlur={handleBlur} value={values.subtasks} name='subtasks' />
 										</FormControl>
 									</div>
-									{
-										errors.description && touched.description &&
-										<label className="task-error" placeholder="e.g landing">{errors.description}</label>
-									}
-									<div>
-										<p>SubTask</p>
-										<div className='sub-tasks'>
-											<FormControl sx={{ m: 1, width: '250px' }} variant="outlined" >
-												<OutlinedInput placeholder="e.g landing" onChange={handleChange} onBlur={handleBlur} value={values.subtasks} name='subtasks' />
-											</FormControl>
-										</div>
-									</div>
-									{
-										errors.subtasks && touched.subtasks &&
-										<label className="task-error" placeholder="e.g landing">{errors.subtasks}</label>
-									}
-									<div>
-										<p>Status</p>
-										<FormControl sx={{ m: 1, minWidth: 120, }}>
-											<Select
-												onBlur={handleBlur}
-												value={values.status}
-												onChange={handleChange}
-												sx={{ width: '250px' }}
-												name='status'
-											>
-												<MenuItem value={'Todo'}>Todo</MenuItem>
-												<MenuItem value={'Doing'}>Doing</MenuItem>
-												<MenuItem value={'Done'}>Done</MenuItem>
-											</Select>
-										</FormControl>
-									</div>
-									<button type='submit' className='form-subtask' onClick={(e) => {
-										eventChange(e)
-										setCounter(counter + 1)
-										handleSubmit()
-									}}>Create Task</button>
-									<div>
-										<label className="task-error"> {repeat} </label>
-									</div>
-								</form>
-							</Box>
-						</Modal>
-					)}
-				</Formik>
-			</div>
-		</div >
-	)
+								</div>
+								{
+									errors.subtasks && touched.subtasks &&
+									<label className="task-error" placeholder="e.g landing">{errors.subtasks}</label>
+								}
+								<div>
+									<p>Status</p>
+									<FormControl sx={{ m: 1, minWidth: 120, }}>
+										<Select
+											onBlur={handleBlur}
+											value={values.status}
+											onChange={handleChange}
+											sx={{ width: '250px' }}
+											name='status'
+										>
+											<MenuItem value={'Todo'}>Todo</MenuItem>
+											<MenuItem value={'Doing'}>Doing</MenuItem>
+											<MenuItem value={'Done'}>Done</MenuItem>
+										</Select>
+									</FormControl>
+								</div>
+								<button type='submit' className='form-subtask' onClick={(e) => {
+									eventChange(e)
+									setCounter(counter + 1)
+									handleSubmit()
+								}}>Create Task</button>
+								<div>
+									<label className="task-error"> {repeat} </label>
+								</div>
+							</form>
+						</Box>
+					</Modal>
+				)}
+			</Formik>
+		</div>
+	</div >
+)
 }
 
 const mapStateToProps = (state) => {
