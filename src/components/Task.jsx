@@ -39,7 +39,8 @@ return (
 					title: '',
 					description: '',
 					subtasks: '',
-					status: 'Todo'
+					status: 'Todo',
+					checked: false
 				}}
 				validate={values => {
 					const errors = {};
@@ -60,7 +61,8 @@ return (
 						title: values.title,
 						description: values.description,
 						subtasks: values.subtasks,
-						status: values.status
+						status: values.status,
+						checked: values.checked
 					}
 					const validations = validateTask(taskForm)
 					if (validations) {

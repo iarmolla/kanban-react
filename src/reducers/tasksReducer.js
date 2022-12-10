@@ -6,6 +6,7 @@ const initialState = {
       description: "",
       subtasks: "",
       status: "",
+      checked: false
     },
   ],
 };
@@ -22,10 +23,15 @@ export default function tasksReducer(state = initialState, action) {
         ...state,
         task: state.tasks.forEach((task) => {
           if (task.id == action.task.id) {
-            task.status = action.task.status;
+            task.status = action.task.status
+            task.checked = action.task.checked
           }
         }),
       };
+    case "UPDATE_TASKS" :
+      return {
+        ...state, tasks: state.tasks = action.tasks
+      }
     default:
       return state;
   }

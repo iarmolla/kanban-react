@@ -123,6 +123,10 @@ main {
 
 }
 
+.hide-section {
+  display: none;
+}
+
 @media (max-width: 992px) {
   main {
     display: grid;
@@ -131,6 +135,7 @@ main {
     gap: 3rem;
     width: 100%;
     position: relative;
+    margin-bottom: 2rem;
   }
   .task {
     margin-left: 10rem;
@@ -141,5 +146,8 @@ main {
   }
   .task {
     min-width: 50px;
+  }
+  form {
+    gap: 0;
   }
 }

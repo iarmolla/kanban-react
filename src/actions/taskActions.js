@@ -12,7 +12,15 @@ function updateTask(task) {
     }
 }
 
+function updateTasks(tasks) {
+    return {
+        type: 'UPDATE_TASKS',
+        tasks
+    }
+}
+
 export {
     createTask,
-    updateTask
+    updateTask,
+    updateTasks
 }
