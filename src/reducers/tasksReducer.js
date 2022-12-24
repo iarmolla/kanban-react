@@ -2,10 +2,10 @@ const initialState = {
   tasks: [
     {
       id: 0,
-      title: "",
+      title: "Landing page",
       description: "",
-      subtasks: "",
-      status: "",
+      subtasks: "speak with tester",
+      status: "Todo",
       checked: false
     },
   ],

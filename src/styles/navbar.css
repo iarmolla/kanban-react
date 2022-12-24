@@ -5,12 +5,6 @@
   margin: 0;
   font-family: "Maven Pro", sans-serif;
 }
-nav {
-  background-color: rgb(255, 255, 255);
-}
-header > h1 {
-  color: rgb(0, 0, 0);
-}
 
 header {
   display: flex;
@@ -41,4 +35,11 @@ header > div > button {
   color: rgb(174, 171, 171);
   font-size: 1.3rem;
   cursor: pointer;
+}
+
+.dark-mode {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

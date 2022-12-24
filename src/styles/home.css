@@ -23,7 +23,8 @@ main {
   content: "TODO";
   color: rgb(185, 185, 185);
   position: absolute;
-  top: 0;
+  /* top: 0; */
+  top: -6px;
   left: 100%;
   padding: 0 0 0 0.5rem;
 }
@@ -45,9 +46,8 @@ main {
   content: "DONE";
 }
 
-.task {
-  background-color: #fff;
-  box-shadow: 1px 3px 2px 1px rgb(225, 230, 227);
+.dark-mode-- {
+  box-shadow: 1px 3px 2px 1px rgb(30 30 30);
   border-radius: 8px;
   padding: 2rem 5rem 2rem 5rem;
   display: flex;
@@ -60,8 +60,18 @@ main {
   cursor: pointer;
 }
 
-.task-title {
-  color: #000;
+.task {
+  box-shadow: 1px 3px 2px 1px rgb(225, 230, 227);
+  border-radius: 8px;
+  padding: 2rem 5rem 2rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  min-width: 300px;
+  cursor: pointer;
 }
 
 .task-paragraph {
@@ -126,6 +136,11 @@ main {
 .hide-section {
   display: none;
 }
+
+.menu-item {
+  color: #fff;
+}
+
 
 @media (max-width: 992px) {
   main {

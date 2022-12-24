@@ -10,13 +10,14 @@ import { MdClose } from "react-icons/md"
 import { Formik } from 'formik'
 import { updateTask, updateTasks } from '../actions/taskActions'
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd"
+import { createTheme } from '@mui/material/styles'
+import { ThemeProvider } from '@mui/material/styles'
 
 const mapStateToProps = (state) => {
   return {
     state: state.tasks
   }
 }
-
 function Home({ state, updateTask, updateTasks }) {
   //TaskForm
   const [open, setOpen] = useState(false)
@@ -30,20 +31,34 @@ function Home({ state, updateTask, updateTasks }) {
   const show = (title) => {
     document.getElementById(title).style.display = 'flex'
   }
+  const [darkMode, setDarkMode] = useState(false)
   const [tasks, setTasks] = useState([])
   useEffect(() => {
     setTasks(state)
   }, [tasks])
   const reorder = (list, startIndex, endIndex) => {
-    const result = [...list];
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-    return result;
-  };
-
+    const result = [...list]
+    const [removed] = result.splice(startIndex, 1)
+    result.splice(endIndex, 0, removed)
+    return result
+  }
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  })
+  const lightTheme = createTheme({
+    palette: {
+      mode: 'light',
+    },
+  })
+  const formStyle = {
+    background: darkMode ? '#121212' : '#fff',
+    color: 'rgb(159, 154, 154)'
+  }
   return (
     <>
-      <NavBar handleClose={handleClose} handleOpen={handleOpen} open={open}></NavBar>
+      <NavBar handleClose={handleClose} handleOpen={handleOpen} open={open} darkMode={darkMode} setDarkMode={setDarkMode} dark={darkTheme} lightTheme={lightTheme}></NavBar>
       <main>
         <DragDropContext onDragEnd={(result) => {
           const { source, destination } = result
@@ -71,7 +86,7 @@ function Home({ state, updateTask, updateTasks }) {
                           {(draggableProvided) => (
                             task?.status === 'Todo' ?
                               <>
-                                <section  {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} className="task" onClick={() => show(`test-${task.title}`)}>
+                                <section className={`${darkMode ? 'dark-mode--' : 'task'}`} {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} onClick={() => show(`test-${task.title}`)}>
                                   <h2 className='task-title'>{task.title}</h2>
                                   <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
                                 </section>
@@ -85,7 +100,7 @@ function Home({ state, updateTask, updateTasks }) {
                                     checked: task.checked
                                   }}
                                     validate={values => {
-                                      const errors = {};
+                                      const errors = {}
 
                                     }}
                                     onSubmit={(values) => {
@@ -104,7 +119,7 @@ function Home({ state, updateTask, updateTasks }) {
                                       handleSubmit,
                                       handleBlur,
                                     }) => (
-                                      <form >
+                                      <form style={formStyle}>
                                         <div className="task-icon-close">
                                           <MdClose className="icon-close" onClick={() => {
                                             hidden(`test-${task.title}`)
@@ -129,19 +144,21 @@ function Home({ state, updateTask, updateTasks }) {
                                         </div>
                                         <div>
                                           <p>Status</p>
-                                          <FormControl sx={{ m: 1, minWidth: 120, }}>
-                                            <Select
-                                              value={values.status}
-                                              sx={{ width: '250px' }}
-                                              onBlur={handleBlur}
-                                              onChange={handleChange}
-                                              name='status'
-                                            >
-                                              <MenuItem value={'Todo'}>Todo</MenuItem>
-                                              <MenuItem value={'Doing'}>Doing</MenuItem>
-                                              <MenuItem value={'Done'}>Done</MenuItem>
-                                            </Select>
-                                          </FormControl>
+                                          <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+                                            <FormControl style={formStyle} sx={{ m: 1, minWidth: 120, color: '#fff' }}>
+                                              <Select
+                                                value={values.status}
+                                                sx={{ width: '250px' }}
+                                                onBlur={handleBlur}
+                                                onChange={handleChange}
+                                                name='status'
+                                              >
+                                                <MenuItem value={'Todo'}>Todo</MenuItem>
+                                                <MenuItem value={'Doing'}>Doing</MenuItem>
+                                                <MenuItem value={'Done'}>Done</MenuItem>
+                                              </Select>
+                                            </FormControl>
+                                          </ThemeProvider>
                                         </div>
                                       </form>
                                     )}
@@ -161,7 +178,6 @@ function Home({ state, updateTask, updateTasks }) {
             )}
           </Droppable>
         </DragDropContext>
-
         <DragDropContext onDragEnd={(result) => {
           const { source, destination } = result
           if (!destination) {
@@ -203,7 +219,7 @@ function Home({ state, updateTask, updateTasks }) {
                                     checked: task.checked
                                   }}
                                     validate={values => {
-                                      const errors = {};
+                                      const errors = {}
 
                                     }}
                                     onSubmit={(values) => {
@@ -320,7 +336,7 @@ function Home({ state, updateTask, updateTasks }) {
                                     checked: task.checked
                                   }}
                                     validate={values => {
-                                      const errors = {};
+                                      const errors = {}
 
                                     }}
                                     onSubmit={(values) => {
@@ -391,7 +407,6 @@ function Home({ state, updateTask, updateTasks }) {
                   {droppableProvided.placeholder}
                 </div>
               </div>
-
             )}
           </Droppable>
         </DragDropContext>

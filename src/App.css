@@ -11,6 +11,7 @@
 }
 .task-input {
     background-color: none;
+    background: none;
     outline: none;
     border: none;
     color: #cbbebe;
@@ -24,6 +25,7 @@
 
 .task-input-- {
     background-color: none;
+    background: none;
     outline: none;
     border: none;
     color: #cbbebe;
