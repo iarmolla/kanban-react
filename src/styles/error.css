@@ -1,0 +1,27 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+    gap: 1rem;
+}
+.container-error {
+    font-size: 8rem;
+}
+.container-link {
+    text-decoration: none;
+    border: none;
+    padding: .5rem;
+    border-radius: 8px;
+    transition: 300ms;
+    background-color: #ebe6f1;
+    color: #b17bec;
+}
+.container-link:hover {
+    background-color: #dac1f5;
+}
+.container-paragraph,.container-title,.container-error {
+   color: #b17bec;
+
+}

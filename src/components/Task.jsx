@@ -25,7 +25,7 @@ function Task({ handleClose, openModal, state, createTask, darkMode }) {
 	const [tasks, setTasks] = useState(state)
 	const validateTask = (taskForm) => {
 		let taskValidate = false
-		tasks.map((task) => {
+		tasks.map((task) => {			
 			taskValidate = task.title == taskForm.title
 		})
 		return taskValidate
