@@ -153,14 +153,15 @@ main {
     position: relative;
     margin-bottom: 2rem;
   }
-  .task {
+  .task,.dark-mode-- {
     margin-left: 10rem;
   }
+
   .task-container {
     max-width: 150px;
     min-width: 50px;
   }
-  .task {
+  .task,.dark-mode-- {
     min-width: 50px;
   }
   form {
