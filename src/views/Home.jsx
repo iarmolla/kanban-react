@@ -124,7 +124,7 @@ function Home({ state, updateTask, updateTasks }) {
                                           <MdClose className="icon-close" onClick={() => {
                                             hidden(`test-${task.title}`)
                                             handleSubmit()
-                                          }} />
+                                          }}></MdClose>                                       
                                         </div>
                                         <h3>{task.title}</h3>
                                         <div>
