@@ -205,7 +205,7 @@ function Home({ state, updateTask, updateTasks }) {
                           {(draggableProvided) => (
                             task?.status === 'Doing' ?
                               <>
-                                <section  {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} className="task" onClick={() => show(`test-${task.title}`)}>
+                                <section  {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} className={`${darkMode ? 'dark-mode--' : 'task'}`}  onClick={() => show(`test-${task.title}`)}>
                                   <h2 className='task-title'>{task.title}</h2>
                                   <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
                                 </section>
@@ -237,7 +237,7 @@ function Home({ state, updateTask, updateTasks }) {
                                       handleSubmit,
                                       handleBlur,
                                     }) => (
-                                      <form >
+                                      <form style={formStyle}>
                                         <div className="task-icon-close">
                                           <MdClose className="icon-close" onClick={() => {
                                             hidden(`test-${task.title}`)
@@ -262,19 +262,21 @@ function Home({ state, updateTask, updateTasks }) {
                                         </div>
                                         <div>
                                           <p>Status</p>
-                                          <FormControl sx={{ m: 1, minWidth: 120, }}>
-                                            <Select
-                                              value={values.status}
-                                              sx={{ width: '250px' }}
-                                              onBlur={handleBlur}
-                                              onChange={handleChange}
-                                              name='status'
-                                            >
-                                              <MenuItem value={'Todo'}>Todo</MenuItem>
-                                              <MenuItem value={'Doing'}>Doing</MenuItem>
-                                              <MenuItem value={'Done'}>Done</MenuItem>
-                                            </Select>
-                                          </FormControl>
+                                          <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+                                            <FormControl style={formStyle} sx={{ m: 1, minWidth: 120, color: '#fff' }}>
+                                              <Select
+                                                value={values.status}
+                                                sx={{ width: '250px' }}
+                                                onBlur={handleBlur}
+                                                onChange={handleChange}
+                                                name='status'
+                                              >
+                                                <MenuItem value={'Todo'}>Todo</MenuItem>
+                                                <MenuItem value={'Doing'}>Doing</MenuItem>
+                                                <MenuItem value={'Done'}>Done</MenuItem>
+                                              </Select>
+                                            </FormControl>
+                                          </ThemeProvider>
                                         </div>
                                       </form>
                                     )}
@@ -322,7 +324,7 @@ function Home({ state, updateTask, updateTasks }) {
                           {(draggableProvided) => (
                             task?.status === 'Done' ?
                               <>
-                                <section  {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} className="task" onClick={() => show(`test-${task.title}`)}>
+                                <section  {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} className={`${darkMode ? 'dark-mode--' : 'task'}`}  onClick={() => show(`test-${task.title}`)}>
                                   <h2 className='task-title'>{task.title}</h2>
                                   <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
                                 </section>
@@ -354,7 +356,7 @@ function Home({ state, updateTask, updateTasks }) {
                                       handleSubmit,
                                       handleBlur,
                                     }) => (
-                                      <form >
+                                      <form style={formStyle}>
                                         <div className="task-icon-close">
                                           <MdClose className="icon-close" onClick={() => {
                                             hidden(`test-${task.title}`)
@@ -379,19 +381,21 @@ function Home({ state, updateTask, updateTasks }) {
                                         </div>
                                         <div>
                                           <p>Status</p>
-                                          <FormControl sx={{ m: 1, minWidth: 120, }}>
-                                            <Select
-                                              value={values.status}
-                                              sx={{ width: '250px' }}
-                                              onBlur={handleBlur}
-                                              onChange={handleChange}
-                                              name='status'
-                                            >
-                                              <MenuItem value={'Todo'}>Todo</MenuItem>
-                                              <MenuItem value={'Doing'}>Doing</MenuItem>
-                                              <MenuItem value={'Done'}>Done</MenuItem>
-                                            </Select>
-                                          </FormControl>
+                                          <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+                                            <FormControl style={formStyle} sx={{ m: 1, minWidth: 120, color: '#fff' }}>
+                                              <Select
+                                                value={values.status}
+                                                sx={{ width: '250px' }}
+                                                onBlur={handleBlur}
+                                                onChange={handleChange}
+                                                name='status'
+                                              >
+                                                <MenuItem value={'Todo'}>Todo</MenuItem>
+                                                <MenuItem value={'Doing'}>Doing</MenuItem>
+                                                <MenuItem value={'Done'}>Done</MenuItem>
+                                              </Select>
+                                            </FormControl>
+                                          </ThemeProvider>
                                         </div>
                                       </form>
                                     )}
