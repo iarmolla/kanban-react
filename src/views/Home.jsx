@@ -18,6 +18,7 @@ const mapStateToProps = (state) => {
     state: state.tasks
   }
 }
+
 function Home({ state, updateTask, updateTasks }) {
   //TaskForm
   const [open, setOpen] = useState(false)

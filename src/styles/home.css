@@ -23,7 +23,6 @@ main {
   content: "TODO";
   color: rgb(185, 185, 185);
   position: absolute;
-  /* top: 0; */
   top: -6px;
   left: 100%;
   padding: 0 0 0 0.5rem;
@@ -55,7 +54,6 @@ main {
   align-items: flex-start;
   justify-content: center;
   margin-top: 2rem;
-  min-width: 400px;
   margin-bottom: 1rem;
   cursor: pointer;
 }
@@ -69,10 +67,14 @@ main {
   align-items: flex-start;
   justify-content: center;
   margin-top: 2rem;
-  min-width: 400px;
   cursor: pointer;
   margin-bottom: 1rem;
-
+}
+.task,
+.dark-mode-- {
+  min-height: 150px;
+  min-width: 100%;
+  max-height: 200px;
 }
 
 .task-paragraph {
@@ -86,6 +88,8 @@ main {
   align-items: center;
   margin-top: 0.5rem;
 }
+.task-container {
+}
 
 .view-task {
   display: none;
@@ -93,7 +97,6 @@ main {
   top: 150%;
   left: 50%;
   /* transform: translate(-50%, -50%); */
-  width: 400px;
   background-color: #fff;
   border: 2px solid #000;
   padding: 32px;
@@ -128,8 +131,8 @@ main {
   transition: 250ms;
 }
 .icon-close:hover {
-  opacity: .3;
-  padding: .5rem;
+  opacity: 0.3;
+  padding: 0.5rem;
   background-color: rgb(142, 142, 142);
 }
 
@@ -141,8 +144,7 @@ main {
   color: #fff;
 }
 
-
-@media (max-width: 992px) {
+/* @media (max-width: 992px) {
   main {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -165,5 +167,27 @@ main {
   }
   form {
     gap: 0;
+  }
+} */
+
+@media (max-width: 992px) {
+  main {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: flex-start;
+    gap: 3rem;
+    width: 100%;
+    position: relative;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+  .task,
+  .dark-mode-- {
+    min-width: 90vw;
+    max-width: 90vw;
+  }
+  .task-container {
+    margin-left: 1rem;
+    align-items: baseline;
   }
 }
