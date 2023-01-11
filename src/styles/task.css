@@ -1,51 +1,56 @@
 form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 400px;
-    padding: 0rem;
-    background-color: #ffffff;
-    /* background-color: #322f2f; */
-    padding: 1rem 0 1rem 0;
-    border-radius: 8px;
-    color: rgb(151, 148, 148);
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  padding: 0rem;
+  background-color: #ffffff;
+  /* background-color: #322f2f; */
+  padding: 1rem 0 1rem 0;
+  border-radius: 8px;
+  color: rgb(151, 148, 148);
+  gap: 1rem;
 }
-
 
 .form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sub-tasks {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-
 .sub-tasks {
-    margin-top: .5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .form-subtask {
-    background-color: #6e6ac2;
-    padding: .5rem 3rem;
-    border-radius: 2rem;
-    color: #f1f1f1;
-    border: none;
+  background-color: #6e6ac2;
+  padding: 0.5rem 3rem;
+  border-radius: 2rem;
+  color: #f1f1f1;
+  border: none;
 }
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .task-error {
-    color: rgb(232, 98, 98);
+  color: rgb(232, 98, 98);
+}
+
+@media (max-width: 768px) {
+  form {
+    width: 350px;
+    font-size: 0.8rem;
+  }
 }
