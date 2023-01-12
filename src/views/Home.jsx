@@ -140,7 +140,7 @@ function Home({ state, updateTask, updateTasks }) {
                                               },
 
                                             }} />
-                                            <input type="text" disabled onChange={handleChange} onBlur={handleBlur} value={values.subtasks} name='subtasks' className={`${values.checked ? 'task-input' : 'task-input--'}`} placeholder={task.subtasks} />
+                                            <input type="text" maxLength={'16'} disabled onChange={handleChange} onBlur={handleBlur} value={values.subtasks} name='subtasks' className={`${values.checked ? 'task-input' : 'task-input--'}`} placeholder={task.subtasks} />
                                           </div>
                                         </div>
                                         <div>
@@ -221,7 +221,6 @@ function Home({ state, updateTask, updateTasks }) {
                                   }}
                                     validate={values => {
                                       const errors = {}
-
                                     }}
                                     onSubmit={(values) => {
                                       setTasks(tasks.map((task) => {

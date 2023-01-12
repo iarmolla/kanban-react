@@ -89,7 +89,6 @@ function Task({ handleClose, openModal, state, createTask, darkMode }) {
 						<Modal
 							open={openModal}
 							onClose={handleClose}
-
 						>
 							<Box sx={style}>
 								<form style={formStyle}>
@@ -97,7 +96,7 @@ function Task({ handleClose, openModal, state, createTask, darkMode }) {
 									<div>
 										<p>Title</p>
 										<FormControl sx={{ m: 1, width: '250px' }} variant="outlined">
-											<OutlinedInput placeholder="e.g landing" value={values.title} onBlur={handleBlur} onChange={handleChange} name='title' />
+											<OutlinedInput inputProps={{ maxLength: 12 }}  placeholder="e.g landing" value={values.title}  onBlur={handleBlur} onChange={handleChange} name='title' />
 										</FormControl>
 									</div>
 									{
@@ -111,7 +110,8 @@ function Task({ handleClose, openModal, state, createTask, darkMode }) {
 												rows={2}
 												onChange={handleChange}
 												value={values.description}
-												onBlur={handleBlur}
+												onBlur={handleBlur}												
+												inputProps={{ maxLength: 12 }}
 												name='description' />
 										</FormControl>
 									</div>
@@ -123,7 +123,7 @@ function Task({ handleClose, openModal, state, createTask, darkMode }) {
 										<p>SubTask</p>
 										<div className='sub-tasks'>
 											<FormControl sx={{ m: 1, width: '250px' }} variant="outlined" >
-												<OutlinedInput placeholder="e.g landing" onChange={handleChange} onBlur={handleBlur} value={values.subtasks} name='subtasks' />
+												<OutlinedInput  inputProps={{ maxLength: 12 }} placeholder="e.g landing" onChange={handleChange} onBlur={handleBlur} value={values.subtasks} name='subtasks' />
 											</FormControl>
 										</div>
 									</div>
