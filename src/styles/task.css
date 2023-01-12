@@ -51,6 +51,8 @@ button {
 @media (max-width: 768px) {
   form {
     width: 350px;
-    font-size: 0.8rem;
-  }
+    font-size: 0.65rem;
+    gap: 0;
+  }  
+ 
 }
