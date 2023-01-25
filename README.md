@@ -1,41 +1,30 @@
 # Kanban-app
 
 Aplicación de tareas, tiene como objetivo la administración de tareas, cuando estan para hacer, en proceso, o hechas.
-Como agregado, tiene diseño responsivo para todos los dispostivos. Cuenta con modo oscuro y claro, para la comodidad del usuario.
+Como agregado, tiene diseño responsivo para todos los dispostivos. Cuenta con modo oscuro, para la comodidad del usuario.
 
 
 ## Características
-- 
-- Sección mujeres
-- Sección joyería
-- Sección tecnología
-- Carrito de compras
-- Imagenes del producto
-- Borrar producto del carrito
-- Registrarse
-- Iniciar sesión 
-- Validaciones del formulario de registro
-- Rutas protegidas
-- Stock del producto
-- Eliminar producto
-- Finalizar compra
 
-ESTD es un ecommerce web que tiene como característica un diseño agradable al usuario para que sea atractivo al consumidor final.
-Tiene como objetivo principal vender productos y a su vez ir haciendo mejoras continuas sobre ESTD.
+- Agregar nueva tarea
+- Modo oscuro
+- Login con auth0
+- Validaciones
+- Tarea con su respectiva sección
+
 
 ## Tecnologías
-El ecommerce esta construido con:
+esta construido con:
 
-- [React]
-- [Bootstrap] 
-- [Formik]
-- [axios]
-- [bootstrap-icons]
-- [react-router-dom]
-- [redux]
+- [React](https://es.reactjs.org/)
+- [MUI](https://mui.com/material-ui/getting-started/installation/)
+- [Formik](https://formik.org/)
+- [react-icons](https://react-icons.github.io/react-icons/)
+- [react-router-dom](https://reactrouter.com/en/main)
+- [redux](https://es.redux.js.org/)
 
 ## Instalación 
+Cambiar variables de entorno para auth0
 
-Para instalar las dependencias usar:
-
-- npm install
+# Para instalar las dependencias:
+- ejecutar npm install
