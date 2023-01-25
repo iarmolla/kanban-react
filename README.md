@@ -1,4 +1,4 @@
-[![kanban.png](https://i.postimg.cc/RhxqthKF/kanban.png)](https://postimg.cc/wyF686W8)
+[![task.png](https://i.postimg.cc/WbDfz4Sr/task.png)](https://postimg.cc/8jSbnN2P)
 
 # Kanban 📁
 
