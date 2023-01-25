@@ -2,8 +2,7 @@
 
 # Kanban 📁
 
-Aplicación de tareas, tiene como objetivo la administración de tareas, cuando estan para hacer, en proceso, o hechas.
-Como agregado, tiene diseño responsivo para todos los dispostivos. Cuenta con modo oscuro, para la comodidad del usuario.
+Aplicación de tareas, tiene como objetivo la administración de tareas, cuando estan para hacer, en proceso, o hechas. Como agregado, tiene diseño responsivo para todos los dispostivos, y su vez cuenta con modo oscuro, para la comodidad del usuario.
 
 
 ## Características 📋
