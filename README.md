@@ -1,3 +1,5 @@
+[![kanban.png](https://i.postimg.cc/RhxqthKF/kanban.png)](https://postimg.cc/wyF686W8)
+
 # Kanban 📁
 
 Aplicación de tareas, tiene como objetivo la administración de tareas, cuando estan para hacer, en proceso, o hechas.
