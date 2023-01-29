@@ -136,6 +136,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
           {drawer}
         </Drawer>
         <Drawer
+          variant='permanent'
           sx={{
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: formStyle.background, color: formStyle.color },
