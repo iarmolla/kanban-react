@@ -25,7 +25,9 @@ function NavBar({ handleClose, handleOpen, setOpen, open, darkMode, setDarkMode,
             <div>
                 <nav className='nav'>
                     <header>
-                        <h1>Platform Launch</h1>
+                        <div>
+                            
+                        </div>
                         <div className='new-task'>
                             <button onClick={handleOpen}>Add New Task</button>
                             <Button
@@ -50,12 +52,7 @@ function NavBar({ handleClose, handleOpen, setOpen, open, darkMode, setDarkMode,
                             >
                                 <MenuItem onClick={() => {
                                     logout({ returnTo: window.location.origin })
-                                }}>Logout</MenuItem>
-                                <MenuItem onClick={() => setDarkMode(!darkMode)}>
-                                    <div className='dark-mode' onClick={() => setDarkMode(!darkMode)}>
-                                        {darkMode ? < MdBrightnessHigh /> : <MdBrightnessLow />}
-                                    </div>
-                                </MenuItem>
+                                }}>Logout</MenuItem>                                
                             </Menu>
                         </div>
                     </header>
