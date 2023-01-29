@@ -63,7 +63,8 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
   })
   const formStyle = {
     background: darkMode ? '#121212' : '#fff',
-    color: 'rgb(159, 154, 154)'
+    color: 'rgb(159, 154, 154)',
+    borderRight: darkMode ? '2px solid rgb(255 255 255 / 23%)' : ''
   }
 
   const handleDrawerToggle = () => {
@@ -127,7 +128,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
           }}
           sx={{
             display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: formStyle.background, color: formStyle.color },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: formStyle.background, borderRight: formStyle.borderRight, color: formStyle.color },
           }}
         >
           {drawer}
@@ -136,7 +137,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
           variant='permanent'
           sx={{
             display: { xs: 'none', sm: 'block' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: formStyle.background, color: formStyle.color },
+            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth, background: formStyle.background, borderRight: formStyle.borderRight, color: formStyle.color },
           }}
           open
         >
@@ -189,7 +190,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                       subtasks: '',
                                       status: task.status,
                                       checked: task.checked
-                                    }}                                      
+                                    }}
                                       onSubmit={(values) => {
                                         setTasks(tasks.map((task) => {
                                           if (task.id == values.id) {
@@ -225,7 +226,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                                   color: '#6e6ac2',
                                                 },
 
-                                              }} />                                             
+                                              }} />
                                               <input type="text" maxLength={'16'} disabled onChange={handleChange} onBlur={handleBlur} value={values.subtasks} name='subtasks' className={`${values.checked ? 'task-input' : 'task-input--'}`} placeholder={task.subtasks} />
                                             </div>
                                           </div>
@@ -292,7 +293,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                             {(draggableProvided) => (
                               task?.status === 'Doing' ?
                                 <>
-                                 <div className="task--padding">
+                                  <div className="task--padding">
                                     <section className={`${darkMode ? 'dark-mode--' : 'task'}`} {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} onClick={() => show(`test-${task.title}`)}>
                                       <h2 className='task-title'>{task.title}</h2>
                                       <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
@@ -306,7 +307,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                       subtasks: '',
                                       status: task.status,
                                       checked: task.checked
-                                    }}                                      
+                                    }}
                                       onSubmit={(values) => {
                                         setTasks(tasks.map((task) => {
                                           if (task.id == values.id) {
@@ -341,7 +342,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                                 color: '#cbbebe', '&.Mui-checked': {
                                                   color: '#6e6ac2',
                                                 },
-                                              }} />                                             
+                                              }} />
                                               <input type="text" disabled onChange={handleChange} onBlur={handleBlur} value={values.subtasks} name='subtasks' className={`${values.checked ? 'task-input' : 'task-input--'}`} placeholder={task.subtasks} />
                                             </div>
                                           </div>
@@ -423,7 +424,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                       subtasks: '',
                                       status: task.status,
                                       checked: task.checked
-                                    }}                                      
+                                    }}
                                       onSubmit={(values) => {
                                         setTasks(tasks.map((task) => {
                                           if (task.id == values.id) {
