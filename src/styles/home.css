@@ -52,6 +52,7 @@ main {
   align-items: flex-start;
   justify-content: center;
   cursor: pointer;
+  padding: 1rem;
 }
 
 .task {
