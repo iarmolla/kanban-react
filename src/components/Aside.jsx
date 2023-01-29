@@ -189,12 +189,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                       subtasks: '',
                                       status: task.status,
                                       checked: task.checked
-                                    }}
-                                      validate={values => {
-                                        const errors = {}
-                                        console.log(values)
-
-                                      }}
+                                    }}                                      
                                       onSubmit={(values) => {
                                         setTasks(tasks.map((task) => {
                                           if (task.id == values.id) {
@@ -311,11 +306,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                       subtasks: '',
                                       status: task.status,
                                       checked: task.checked
-                                    }}
-                                      validate={values => {
-                                        console.log(values)
-                                        const errors = {}
-                                      }}
+                                    }}                                      
                                       onSubmit={(values) => {
                                         setTasks(tasks.map((task) => {
                                           if (task.id == values.id) {
@@ -432,11 +423,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                       subtasks: '',
                                       status: task.status,
                                       checked: task.checked
-                                    }}
-                                      validate={values => {
-                                        const errors = {}
-
-                                      }}
+                                    }}                                      
                                       onSubmit={(values) => {
                                         setTasks(tasks.map((task) => {
                                           if (task.id == values.id) {
