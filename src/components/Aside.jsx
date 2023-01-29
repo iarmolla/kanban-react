@@ -23,7 +23,6 @@ import { Formik } from 'formik'
 import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd"
 import { createTheme } from '@mui/material/styles'
 import { ThemeProvider } from '@mui/material/styles'
-import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -35,11 +34,9 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
   const [open, setOpen] = useState(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-  //Ocultar vista de tareas
   const hidden = (title) => {
     document.getElementById(title).style.display = 'none'
   }
-  //Mostrar vista de tareas
   const show = (title) => {
     document.getElementById(title).style.display = 'flex'
   }
@@ -178,10 +175,12 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                             {(draggableProvided) => (
                               task?.status === 'Todo' ?
                                 <>
-                                  <section className={`${darkMode ? 'dark-mode--' : 'task'}`} {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} onClick={() => show(`test-${task.title}`)}>
-                                    <h2 className='task-title'>{task.title}</h2>
-                                    <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
-                                  </section>
+                                  <div className="task--padding">
+                                    <section className={`${darkMode ? 'dark-mode--' : 'task'}`} {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} onClick={() => show(`test-${task.title}`)}>
+                                      <h2 className='task-title'>{task.title}</h2>
+                                      <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
+                                    </section>
+                                  </div>
                                   <div id={`test-${task.title}`} className={`view-task hide-task`}>
                                     <Formik initialValues={{
                                       id: task.id,
@@ -193,6 +192,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                     }}
                                       validate={values => {
                                         const errors = {}
+                                        console.log(values)
 
                                       }}
                                       onSubmit={(values) => {
@@ -230,7 +230,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                                   color: '#6e6ac2',
                                                 },
 
-                                              }} />
+                                              }} />                                             
                                               <input type="text" maxLength={'16'} disabled onChange={handleChange} onBlur={handleBlur} value={values.subtasks} name='subtasks' className={`${values.checked ? 'task-input' : 'task-input--'}`} placeholder={task.subtasks} />
                                             </div>
                                           </div>
@@ -297,10 +297,12 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                             {(draggableProvided) => (
                               task?.status === 'Doing' ?
                                 <>
-                                  <section  {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} className={`${darkMode ? 'dark-mode--' : 'task'}`} onClick={() => show(`test-${task.title}`)}>
-                                    <h2 className='task-title'>{task.title}</h2>
-                                    <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
-                                  </section>
+                                 <div className="task--padding">
+                                    <section className={`${darkMode ? 'dark-mode--' : 'task'}`} {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} onClick={() => show(`test-${task.title}`)}>
+                                      <h2 className='task-title'>{task.title}</h2>
+                                      <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
+                                    </section>
+                                  </div>
                                   <div id={`test-${task.title}`} className={`view-task hide-task`}>
                                     <Formik initialValues={{
                                       id: task.id,
@@ -311,12 +313,14 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                       checked: task.checked
                                     }}
                                       validate={values => {
+                                        console.log(values)
                                         const errors = {}
                                       }}
                                       onSubmit={(values) => {
                                         setTasks(tasks.map((task) => {
                                           if (task.id == values.id) {
                                             task.status = values.status
+                                            task.checked = values.checked
                                           }
                                         }))
                                         updateTask(values)
@@ -346,8 +350,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                                 color: '#cbbebe', '&.Mui-checked': {
                                                   color: '#6e6ac2',
                                                 },
-
-                                              }} />
+                                              }} />                                             
                                               <input type="text" disabled onChange={handleChange} onBlur={handleBlur} value={values.subtasks} name='subtasks' className={`${values.checked ? 'task-input' : 'task-input--'}`} placeholder={task.subtasks} />
                                             </div>
                                           </div>
@@ -415,10 +418,12 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                             {(draggableProvided) => (
                               task?.status === 'Done' ?
                                 <>
-                                  <section  {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} className={`${darkMode ? 'dark-mode--' : 'task'}`} onClick={() => show(`test-${task.title}`)}>
-                                    <h2 className='task-title'>{task.title}</h2>
-                                    <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
-                                  </section>
+                                  <div className="task--padding">
+                                    <section className={`${darkMode ? 'dark-mode--' : 'task'}`} {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} onClick={() => show(`test-${task.title}`)}>
+                                      <h2 className='task-title'>{task.title}</h2>
+                                      <p className='task-paragraph'>Subtasks: {task.subtasks}</p>
+                                    </section>
+                                  </div>
                                   <div id={`test-${task.title}`} className={`view-task hide-task`}>
                                     <Formik initialValues={{
                                       id: task.id,
@@ -436,6 +441,7 @@ function ResponsiveDrawer(props, { test, state, updateTask, updateTasks }) {
                                         setTasks(tasks.map((task) => {
                                           if (task.id == values.id) {
                                             task.status = values.status
+                                            task.checked = values.checked
                                           }
                                         }))
                                         updateTask(values)
